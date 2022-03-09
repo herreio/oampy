@@ -9,5 +9,5 @@ setup(
     license="GPLv3",
     url="https://github.com/herreio/oampy",
     packages=["oampy"],
-    install_requires=["pymongo"],
+    install_requires=["requests"],
 )
