@@ -9,7 +9,8 @@ def get_logger(name="oampy", loglevel=None):
         stream = logging.StreamHandler()
         if loglevel is not None and loglevel != stream.level:
             stream.setLevel(loglevel)
-        stream.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s", "%Y-%m-%d %H:%M:%S"))
+        stream.setFormatter(logging.Formatter(
+            "%(asctime)s [%(levelname)s] %(name)s: %(message)s", "%Y-%m-%d %H:%M:%S"))
         logger.addHandler(stream)
         if loglevel is not None and loglevel != logger.level:
             logger.setLevel(loglevel)
@@ -48,14 +49,33 @@ def response_json(response):
             return response.json()
         except requests.exceptions.JSONDecodeError:
             logger = get_logger()
-            logger.error("Failed to parse JSON data retrieved from URL {0}".format(response.url))
+            logger.error(
+                "Failed to parse JSON data retrieved from URL {0}".format(response.url))
             if response.text:
                 logger.error("Found payload: {0}".format(response.text))
 
 
-def json_request(url, params={}, headers={}):
-    response = get_request(url, params=params, headers=headers)
+def json_request(url, headers={}):
+    response = get_request(url, headers=headers)
     return response_json(response)
+
+
+def data_ok(response):
+    if response and response["ok"] == 1:
+        return True
+    return False
+
+
+def oam_request(url, headers={}):
+    response = json_request(url, headers=headers)
+    if data_ok(response):
+        return response
+
+
+def oam_batch(response):
+    if "cursor" in response:
+        if "firstBatch" in response["cursor"]:
+            return response["cursor"]["firstBatch"]
 
 
 def json_str(data):
