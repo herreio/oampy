@@ -9,5 +9,8 @@ setup(
     license="GPLv3",
     url="https://github.com/herreio/oampy",
     packages=["oampy"],
-    install_requires=["requests"],
+    install_requires=["requests", "click"],
+    entry_points={
+      'console_scripts': ['oampy = oampy.__main__:main'],
+    },
 )

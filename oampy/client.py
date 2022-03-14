@@ -1,3 +1,10 @@
+"""
+Client class for the Open Access Monitor API
+
+For more information on the interface, see
+https://open-access-monitor.de/api/swagger/index.html
+"""
+
 from . import utils
 
 
@@ -28,18 +35,18 @@ class OpenAccessMonitorAPI:
     def query_url(self, query):
         return "{0}?query={1}".format(self.PUBLIC, query)
 
-    def get(self, query, headers={}):
+    def get(self, query):
         url = self.query_url(query)
         return utils.oam_request(url, headers=self.headers)
 
-    def search(self, find, limit=10, headers={}, **kwargs):
+    def search(self, find, limit=10, **kwargs):
         query = self.find_query(find, limit=limit, **kwargs)
-        response = self.get(query, headers=self.headers)
+        response = self.get(query)
         if response is not None:
             return utils.oam_batch(response)
 
-    def scroll(self, find, limit=100, headers={}, **kwargs):
-        batch = self.search(find, limit=limit, headers=self.headers, **kwargs)
+    def scroll(self, find, limit=100, **kwargs):
+        batch = self.search(find, limit=limit, **kwargs)
         if len(batch) < limit:
             return batch
         skip = 0
@@ -48,8 +55,7 @@ class OpenAccessMonitorAPI:
         finished = False
         while not finished:
             skip += limit
-            batch = self.search(find, limit=limit, skip=skip,
-                                headers=self.headers, **kwargs)
+            batch = self.search(find, limit=limit, skip=skip, **kwargs)
             if batch:
                 batches.extend(batch)
                 if len(batch) < limit:
@@ -57,3 +63,13 @@ class OpenAccessMonitorAPI:
             else:
                 finished = True
         return batches
+
+    def publication(self, doi):
+        response = self.search("Publications", limit=1, filter={"_id": doi})
+        if response and len(response) > 0:
+            return response[0]
+
+    def journal(self, issn):
+        response = self.search("Journals", limit=1, filter={"issns": issn})
+        if response and len(response) > 0:
+            return response[0]

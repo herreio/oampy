@@ -1,1 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+This package allows to access data from the Open Access Monitor (OAM)
+run by Forschungszentrum Jülich (c) 2022.
+
+For the OAM dasboard, see
+https://open-access-monitor.de
+"""
+
+__author__ = "Donatus Herre <donatus.herre@slub-dresden.de>"
+__version__ = "0.0.0"
+
+
 from . import client
+
+
+def get_api(headers={}):
+    return client.OpenAccessMonitorAPI(headers=headers)
+
+
+def get_journal(issn, headers={}):
+    oamapi = get_api(headers=headers)
+    return oamapi.journal(issn)
+
+
+def get_publication(doi, headers={}):
+    oamapi = get_api(headers=headers)
+    return oamapi.publication(doi)
+
+
+def run_search(find, limit=10, headers={}, **kwargs):
+    oamapi = get_api(headers=headers)
+    return oamapi.search(find, limit=limit, **kwargs)

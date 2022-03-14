@@ -80,3 +80,7 @@ def oam_batch(response):
 
 def json_str(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
+
+
+def json_str_pretty(data):
+    return json.dumps(data, ensure_ascii=False, indent=2)
