@@ -45,7 +45,7 @@ Interpreter
     # fetch metadata of journal
     journal = oampy.get_journal("0360-4012")
     # fetch metadata of publication
-    publication = oampy.publication("10.1007/s11263-011-0505-4")
+    publication = oampy.get_publication("10.1007/s11263-011-0505-4")
 
 
 Usage Terms
