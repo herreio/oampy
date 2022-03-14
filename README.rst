@@ -2,6 +2,8 @@
 oampy
 =====
 
+*Under Development*
+
 ``oampy`` is a Python package and command line tool that allows to access data
 from the Open Access Monitor (OAM) run by Forschungszentrum Jülich.
 
