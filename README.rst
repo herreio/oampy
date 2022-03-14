@@ -25,7 +25,28 @@ Installation
 Usage Examples
 =============
 
-...
+Command Line
+~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    # fetch metadata of journal given by ISSN
+    oampy journal 0360-4012
+
+    # fetch metadata of publication given by DOI
+    oampy publication 10.1007/s11263-011-0505-4
+
+
+Interpreter
+~~~~~~~~~~~
+
+.. code-block:: python
+
+    import oampy
+    # fetch metadata of journal
+    journal = oampy.get_journal("0360-4012")
+    # fetch metadata of publication
+    publication = oampy.publication("10.1007/s11263-011-0505-4")
 
 
 Usage Terms
