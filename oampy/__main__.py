@@ -2,7 +2,10 @@ import click
 from . import get_publication, get_journal
 from .utils import json_str, json_str_pretty
 
-HEADERS = {"User-Agent": "oampy-cli 0.0.0 <mailto:donatus.herre@slub-dresden.de>"}
+from . import __version__
+
+HEADERS = {
+    "User-Agent": "oampy-cli {0} <mailto:donatus.herre@slub-dresden.de>".format(__version__)}
 
 
 def json_output(raw, pretty):
