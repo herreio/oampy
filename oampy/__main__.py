@@ -26,6 +26,10 @@ def main():
 
 
 def main_options(function):
+    """
+    Reuse decorators for multiple commands
+    https://stackoverflow.com/a/50061489
+    """
     function = click.option("-p", "--pretty", is_flag=True,
                             help="pretty print output")(function)
     return function
