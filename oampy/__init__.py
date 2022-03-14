@@ -5,6 +5,9 @@ run by Forschungszentrum Jülich (c) 2022.
 
 For the OAM dasboard, see
 https://open-access-monitor.de
+
+For the OAM documentation, see
+https://jugit.fz-juelich.de/synoa/oam-dokumentation/-/wikis/home
 """
 
 __author__ = "Donatus Herre <donatus.herre@slub-dresden.de>"
