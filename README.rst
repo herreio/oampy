@@ -25,7 +25,7 @@ Installation
    pip install -e git+https://github.com/herreio/oampy.git#egg=oampy
 
 Usage Examples
-=============
+==============
 
 Command Line
 ~~~~~~~~~~~~
