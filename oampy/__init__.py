@@ -3,7 +3,7 @@
 This package allows to access data from the Open Access Monitor (OAM)
 run by Forschungszentrum Jülich (c) 2022.
 
-For the OAM dasboard, see
+For the OAM dashboard, see
 https://open-access-monitor.de
 
 For the OAM documentation, see
