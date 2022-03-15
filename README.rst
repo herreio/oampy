@@ -33,10 +33,9 @@ Command Line
 .. code-block:: shell
 
     # fetch metadata of journal given by ISSN
-    oampy journal 0360-4012
+    oampy journal "0360-4012"
     # fetch metadata of publication given by DOI
-    oampy publication 10.1007/s11263-011-0505-4
-
+    oampy publication "10.1007/s11263-011-0505-4"
 
 Interpreter
 ~~~~~~~~~~~
@@ -48,7 +47,6 @@ Interpreter
     journal = oampy.get_journal("0360-4012")
     # fetch metadata of publication
     publication = oampy.get_publication("10.1007/s11263-011-0505-4")
-
 
 Usage Terms
 ===========
@@ -63,4 +61,4 @@ Open Access Monitor
     - Reuse of larger amounts of data and use of the API: please contact us.
     - Reuse of the data by download via the OAM application: CC BY 4.0
 
-    https://open-access-monitor.de/
+    https://open-access-monitor.de
