@@ -31,7 +31,7 @@ def main_options(function):
     https://stackoverflow.com/a/50061489
     """
     function = click.option("-p", "--pretty", is_flag=True,
-                            help="pretty print output")(function)
+                            help="Pretty print output")(function)
     return function
 
 
