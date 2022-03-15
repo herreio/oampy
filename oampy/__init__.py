@@ -17,20 +17,20 @@ __version__ = "0.1.1"
 from . import client
 
 
-def get_api(headers={}):
+def get_client(headers={}):
     return client.OpenAccessMonitorAPI(headers=headers)
 
 
 def get_journal(issn, headers={}):
-    oamapi = get_api(headers=headers)
+    oamapi = get_client(headers=headers)
     return oamapi.journal(issn)
 
 
 def get_publication(doi, headers={}):
-    oamapi = get_api(headers=headers)
+    oamapi = get_client(headers=headers)
     return oamapi.publication(doi)
 
 
 def run_search(find, limit=10, headers={}, **kwargs):
-    oamapi = get_api(headers=headers)
+    oamapi = get_client(headers=headers)
     return oamapi.search(find, limit=limit, **kwargs)
