@@ -22,6 +22,9 @@ def print_json(raw, pretty):
 
 @click.group()
 def main():
+    """
+    Fetch metadata from the Open Access Monitor (OAM)
+    """
     pass
 
 
