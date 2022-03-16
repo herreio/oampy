@@ -2,7 +2,7 @@ import json
 import logging
 import requests
 
-from . import __version__
+from . import __version__, EMAIL
 
 
 def get_logger(name="oampy", loglevel=None):
@@ -24,8 +24,7 @@ def get_logger(name="oampy", loglevel=None):
 
 def get_request(url, params={}, headers={}):
     if "User-Agent" not in headers:
-        headers["User-Agent"] = "oampy {0} <mailto:donatus.herre@slub-dresden.de>".format(
-            __version__)
+        headers["User-Agent"] = "oampy {0} <{1}>".format(__version__, EMAIL)
     try:
         return requests.get(url, params=params, headers=headers)
     except requests.exceptions.RequestException as err:

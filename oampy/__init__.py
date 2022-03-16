@@ -13,6 +13,16 @@ https://jugit.fz-juelich.de/synoa/oam-dokumentation/-/wikis/home
 __author__ = "Donatus Herre <donatus.herre@slub-dresden.de>"
 __version__ = "0.1.2"
 
+import os
+
+try:
+    EMAIL = os.environ["OAM_EMAIL"]
+except KeyError:
+    import socket
+    import getpass
+    host = socket.gethostname()
+    user = getpass.getuser()
+    EMAIL = "{0}@{1}".format(user, host)
 
 from . import client
 
