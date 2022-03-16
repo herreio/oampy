@@ -1,8 +1,6 @@
-=====
-oampy
-=====
-
-*Under Development*
+============
+oampy (beta)
+============
 
 ``oampy`` is a Python package and command line tool that allows to access data
 from the Open Access Monitor (OAM), which is run by Forschungszentrum Jülich.
@@ -10,19 +8,20 @@ from the Open Access Monitor (OAM), which is run by Forschungszentrum Jülich.
 Installation
 ============
 
-... via SSH
-~~~~~~~~~~~
+... via PyPI
+~~~~~~~~~~~~
 
 .. code-block:: bash
 
-   pip install -e git+ssh://git@github.com/herreio/oampy.git#egg=oampy
+   pip install oampy
 
-... or via HTTPS
-~~~~~~~~~~~~~~~~
+Prerequisite
+============
 
-.. code-block:: bash
-
-   pip install -e git+https://github.com/herreio/oampy.git#egg=oampy
+Create an environment variable ``OAM_EMAIL`` with your email address. If the
+variable isn’t created before using this package, your ``username@hostname``
+will be used to populate the user agent field in the request headers instead.
+See also `Usage Terms`_ below.
 
 Usage Examples
 ==============
