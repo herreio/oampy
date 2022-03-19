@@ -20,6 +20,11 @@ def print_json(raw, pretty):
         print(json_output(raw, pretty))
 
 
+def print_result(result, pretty):
+    if result is not None:
+        print_json(result.raw, pretty)
+
+
 @click.group()
 def main():
     """
@@ -44,7 +49,7 @@ def main_options(function):
 def publication(doi, pretty):
     """Fetch metadata of publication given by DOI"""
     p = get_publication(doi, headers=HEADERS)
-    print_json(p, pretty)
+    print_result(p, pretty)
 
 
 @main.command()
@@ -53,7 +58,7 @@ def publication(doi, pretty):
 def journal(issn, pretty):
     """Fetch metadata of journal given by ISSN"""
     j = get_journal(issn, headers=HEADERS)
-    print_json(j, pretty)
+    print_result(j, pretty)
 
 
 if __name__ == '__main__':
