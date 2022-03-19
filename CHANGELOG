@@ -1,3 +1,7 @@
+0.1.4 [2022-03-19]
+
+- add parser module docs
+
 0.1.3 [2022-03-16]
 
 - add environment variable OAM_EMAIL
