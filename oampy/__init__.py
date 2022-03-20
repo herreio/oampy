@@ -60,7 +60,7 @@ def run_journal_search(limit=10, scroll=True, headers={}, **kwargs):
 
 
 def get_agreement_journals(agreement, limit=10, scroll=True, filter={}, headers={}, **kwargs):
-    agreement_filter = query.filter_agreements(agreement)
+    agreement_filter = query.filter_agreements(agreement, filter=filter)
     return run_journal_search(limit=limit, scroll=scroll, headers=headers, filter=agreement_filter, **kwargs)
 
 
