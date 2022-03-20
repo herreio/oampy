@@ -48,14 +48,26 @@ def run_search(find, limit=10, scroll=False, headers={}, **kwargs):
     return oamapi.search(find, limit=limit, **kwargs)
 
 
+def run_journal_search(limit=10, scroll=True, headers={}, **kwargs):
+    result = run_search("Journals", limit=limit, scroll=scroll, headers=headers, **kwargs)
+    if result and len(result) > 0:
+        return [client.docs.JournalParser(j) for j in result]
+
+
+def run_publication_search(limit=10, scroll=False, headers={}, **kwargs):
+    result = run_search("Publications", limit=limit, scroll=scroll, headers=headers, **kwargs)
+    if result and len(result) > 0:
+        return [client.docs.PublicationParser(p) for p in result]
+
+
 def get_agreement_journals(agreement, limit=10, scroll=True, filter={}, headers={}, **kwargs):
     agreement_filter = query.filter_agreements(agreement)
-    return run_search("Journals", limit=limit, scroll=scroll, filter=agreement_filter,  **kwargs)
+    return run_journal_search(limit=limit, scroll=scroll, headers=headers, filter=agreement_filter, **kwargs)
 
 
 def get_wos_grid_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     grid_filter = query.filter_wos_organisation_grid(grid_id, filter=filter)
-    return run_search("Publications", limit=limit, scroll=scroll, filter=grid_filter, **kwargs)
+    return run_publication_search(limit=limit, scroll=scroll, headers=headers, filter=grid_filter, **kwargs)
 
 
 def get_wos_grid_latest_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -65,7 +77,7 @@ def get_wos_grid_latest_publications(grid_id, limit=10, scroll=False, filter={},
 
 def get_dim_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     ror_filter = query.filter_dim_organisation_ror(ror_id, filter=filter)
-    return run_search("Publications", limit=limit, scroll=scroll, filter=ror_filter, **kwargs)
+    return run_publication_search(limit=limit, scroll=scroll, headers=headers, filter=ror_filter, **kwargs)
 
 
 def get_dim_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -75,7 +87,7 @@ def get_dim_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, h
 
 def get_wos_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     ror_filter = query.filter_wos_organisation_ror(ror_id, filter=filter)
-    return run_search("Publications", limit=limit, scroll=scroll, filter=ror_filter, **kwargs)
+    return run_publication_search(limit=limit, scroll=scroll, headers=headers, filter=ror_filter, **kwargs)
 
 
 def get_wos_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -85,7 +97,7 @@ def get_wos_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, h
 
 def get_dim_grid_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     grid_filter = query.filter_dim_organisation_grid(grid_id, filter=filter)
-    return run_search("Publications", limit=limit, scroll=scroll, filter=grid_filter, **kwargs)
+    return run_publication_search(limit=limit, scroll=scroll, headers=headers, filter=grid_filter, **kwargs)
 
 
 def get_dim_grid_latest_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
