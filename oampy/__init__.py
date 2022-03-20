@@ -41,6 +41,11 @@ def get_publication(doi, headers={}):
     return oamapi.publication(doi)
 
 
+def get_publication_costs(doi, headers={}):
+    oamapi = get_client(headers=headers)
+    return oamapi.publication_costs(doi)
+
+
 def run_search(find, limit=10, scroll=False, headers={}, **kwargs):
     oamapi = get_client(headers=headers)
     if scroll:

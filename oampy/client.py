@@ -70,6 +70,11 @@ class OpenAccessMonitorAPI:
         if response and len(response) > 0:
             return docs.PublicationParser(response[0])
 
+    def publication_costs(self, doi):
+        response = self.search("PublicationCosts", limit=1, filter={"_id": doi})
+        if response and len(response) > 0:
+            return docs.PublicationCostsParser(response[0])
+
     def journal(self, issn):
         response = self.search("Journals", limit=1, filter={"issns": issn})
         if response and len(response) > 0:

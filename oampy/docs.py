@@ -241,22 +241,20 @@ class JournalParser(OaObjectParser):
         return self._field("agreements")
 
 
-class PublicationParser(OaObjectParser):
+class PubObjectParser(OaObjectParser):
 
     def __init__(self, data):
         super().__init__(data)
 
     @property
-    def year(self):
-        return self._field("year")
-
-    @property
-    def published_date(self):
-        return self._field("published_date")
-
-    @property
     def _journal(self):
         return self._field("journal")
+
+    @property
+    def journal(self):
+        field = self._journal
+        if field:
+            return JournalParser(field)
 
     @property
     def _publisher(self):
@@ -267,6 +265,20 @@ class PublicationParser(OaObjectParser):
         field = self._publisher
         if field:
             return PublisherParser(field)
+
+    @property
+    def published_date(self):
+        return self._field("published_date")
+
+
+class PublicationParser(PubObjectParser):
+
+    def __init__(self, data):
+        super().__init__(data)
+
+    @property
+    def year(self):
+        return self._field("year")
 
     @property
     def _dim(self):
@@ -287,3 +299,109 @@ class PublicationParser(OaObjectParser):
         field = self._wos
         if field:
             return PublicationSourceDataParser(field)
+
+
+class PublicationCostsParser(PubObjectParser):
+
+    def __init__(self, data):
+        super().__init__(data)
+
+    # @property
+    # def _organisations(self):
+    #     return self._field("organisations")
+
+    # @property
+    # def organisations(self):
+    #     fields = self._organisations
+    #     if isinstance(fields, list) and len(fields) > 0:
+    #         return [OrganisationParser(o) for o in fields]
+
+    @property
+    def doi(self):
+        return self._field("doi")
+
+    # @property
+    # def year(self):
+    #     return self._field("year")
+
+    # @property
+    # def oa_charges(self):
+    #     return self._field("oa_color")
+
+    # @property
+    # def apc(self):
+    #     return self._field("apc")
+
+    # @property
+    # def color_charges(self):
+    #     return self._field("color_charges")
+
+    # @property
+    # def cover(self):
+    #     return self._field("cover")
+
+    # @property
+    # def hybrid_oa(self):
+    #     return self._field("hybrid_oa")
+
+    # @property
+    # def other(self):
+    #     return self._field("other")
+
+    # @property
+    # def page_charges(self):
+    #     return self._field("page_charges")
+
+    # @property
+    # def publication_charges(self):
+    #     return self._field("publication_charges")
+
+    # @property
+    # def reprint(self):
+    #     return self._field("reprint")
+
+    # @property
+    # def submission_fee(self):
+    #     return self._field("submission_fee")
+
+    # @property
+    # def total(self):
+    #     return self._field("total")
+
+    @property
+    def _openapc(self):
+        return self._field("openapc")
+
+    @property
+    def openapc(self):
+        field = self._openapc
+        if field:
+            return OpenApcParser(field)
+
+
+class OpenApcParser(BaseParser):
+
+    def __init__(self, data):
+        super().__init__(data)
+
+    @property
+    def _organisations(self):
+        return self._field("organisations")
+
+    @property
+    def organisations(self):
+        fields = self._organisations
+        if isinstance(fields, list) and len(fields) > 0:
+            return [OrganisationParser(o) for o in fields]
+
+    @property
+    def year(self):
+        return self._field("year")
+
+    @property
+    def apc(self):
+        return self._field("apc")
+
+    @property
+    def total(self):
+        return self._field("total")
