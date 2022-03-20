@@ -64,6 +64,16 @@ def filter_wos_organisation_grid(grid_id, filter={}):
     return filter
 
 
+def filter_openapc_organisation_ror(ror_id, filter={}):
+    filter["openapc.organisations._id"] = "https://ror.org/{0}".format(ror_id)
+    return filter
+
+
+def filter_openapc_organisation_grid(grid_id, filter={}):
+    filter["openapc.organisations.grid_id"] = grid_id
+    return filter
+
+
 def filter_agreements(agreement, filter={}):
     filter["agreements"] = agreement
     return filter
