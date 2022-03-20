@@ -31,6 +31,8 @@ Command Line
 
 .. code-block:: shell
 
+    # set environment variable OAM_EMAIL
+    export OAM_EMAIL="researcher@institution.org"
     # fetch metadata of journal given by ISSN
     oampy journal "0360-4012"
     # fetch metadata of publication given by DOI
@@ -41,6 +43,11 @@ Interpreter
 
 .. code-block:: python
 
+    # import package os
+    import os
+    # set environment variable OAM_EMAIL
+    os.environ["OAM_EMAIL"] = "researcher@institution.org"
+    # import package oampy
     import oampy
     # fetch metadata of journal
     journal = oampy.get_journal("0360-4012")
