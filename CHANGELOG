@@ -1,3 +1,7 @@
+0.1.11 [2022-03-20]
+
+- add filter queries and package functions
+
 0.1.10 [2022-03-20]
 
 - consider PublicationCosts collection
