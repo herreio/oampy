@@ -53,7 +53,7 @@ def get_wos_grid_publications(grid_id, limit=10, scroll=False, filter={}, header
     return run_search("Publications", limit=limit, scroll=scroll, filter=grid_filter, **kwargs)
 
 
-def get_wos_grid_latest(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
+def get_wos_grid_latest_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     latest_sort = query.sort_desc("published_date")
     return get_wos_grid_publications(grid_id, limit=limit, scroll=scroll, filter=filter, headers=headers, sort=latest_sort, **kwargs)
 
