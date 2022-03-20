@@ -48,6 +48,11 @@ def run_search(find, limit=10, scroll=False, headers={}, **kwargs):
     return oamapi.search(find, limit=limit, **kwargs)
 
 
+def get_agreement_journals(agreement, limit=10, scroll=True, filter={}, headers={}, **kwargs):
+    agreement_filter = query.filter_agreements(agreement)
+    return run_search("Journals", limit=limit, scroll=scroll, filter=agreement_filter,  **kwargs)
+
+
 def get_wos_grid_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     grid_filter = query.filter_wos_organisation_grid(grid_id, filter=filter)
     return run_search("Publications", limit=limit, scroll=scroll, filter=grid_filter, **kwargs)
