@@ -1,3 +1,9 @@
+0.1.8
+
+- add functions to package
+  - `run_journal_search`
+  - `run_publication_search`
+
 0.1.7 [2022-03-20]
 
 - add function to package

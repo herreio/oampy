@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="oampy",
-    version="0.1.7",
+    version="0.1.8",
     author="Donatus Herre",
     author_email="donatus.herre@slub-dresden.de",
     description="Open Access Monitor API Client",
