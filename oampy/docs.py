@@ -223,6 +223,7 @@ class JournalParser(OaObjectParser):
 
     def __init__(self, data):
         super().__init__(data)
+        self._delim = "|"
 
     @property
     def title(self):
@@ -232,13 +233,45 @@ class JournalParser(OaObjectParser):
     def issns(self):
         return self._field("issns")
 
+    def get_issns(self, joined=True):
+        issns = self.issns
+        if isinstance(issns, list) and len(issns) > 0:
+            if joined:
+                return self._delim.join(issns)
+            return issns
+
     @property
     def flags(self):
         return self._field("flags")
 
+    def get_flags(self, joined=True):
+        flags = self.flags
+        if isinstance(flags, list) and len(flags) > 0:
+            if joined:
+                return self._delim.join(flags)
+            return flags
+
     @property
     def agreements(self):
         return self._field("agreements")
+
+    def get_agreements(self, joined=True):
+        agreements = self.agreements
+        if isinstance(agreements, list) and len(agreements) > 0:
+            if joined:
+                return self._delim.join(agreements)
+            return agreements
+
+    @property
+    def csv_header(self):
+        return ["id", "title", "oa_color", "issns", "agreements"]
+
+    @property
+    def csv_row(self):
+        return [self.id, self.title,
+                self.oa_color,
+                self.get_issns() or "",
+                self.get_agreements() or ""]
 
 
 class PubObjectParser(OaObjectParser):
