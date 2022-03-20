@@ -112,20 +112,6 @@ class ObjectParser(BaseParser):
 
 
 class OrganisationParser(ObjectParser):
-    """
-    {
-    "_id": <string>,
-    "grid_id": <string>,
-    "name": <string>,
-    "aliases": [ <string>, <...> ],
-    "acronyms": [ <string>, <...> ],
-    "type": <string>,
-    "address": <RorAddress>,
-    "labels": <RorLabels>,
-    "relationships": <RorRelationship>,
-    "corresponding": <bool?>
-    }
-    """
 
     def __init__(self, data):
         super().__init__(data)
