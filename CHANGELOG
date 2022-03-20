@@ -1,3 +1,8 @@
+0.1.7 [2022-03-20]
+
+- add function to package
+  - `get_agreement_journals`
+
 0.1.6 [2022-03-20]
 
 - refactor name of package function
