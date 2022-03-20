@@ -64,6 +64,11 @@ def filter_wos_organisation_grid(grid_id, filter={}):
     return filter
 
 
+def filter_agreements(agreement, filter={}):
+    filter["agreements"] = agreement
+    return filter
+
+
 def sort_asc(value):
     return {value: 1}
 
