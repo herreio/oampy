@@ -11,7 +11,7 @@ https://jugit.fz-juelich.de/synoa/oam-dokumentation/-/wikis/home
 """
 
 __author__ = "Donatus Herre <donatus.herre@slub-dresden.de>"
-__version__ = "0.1.13"
+__version__ = "0.1.14"
 
 import os
 

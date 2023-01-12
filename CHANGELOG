@@ -1,3 +1,7 @@
+0.1.14 [2022-01-12]
+
+- adjust utils.oam_batch after changes in response format
+
 0.1.13 [2022-03-20]
 
 - update JournalParser class
