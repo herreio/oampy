@@ -76,8 +76,8 @@ def oam_request(url, headers={}):
 
 def oam_batch(response):
     if "cursor" in response:
-        if "firstBatch" in response["cursor"]:
-            return response["cursor"]["firstBatch"]
+        if "batch" in response["cursor"]:
+            return response["cursor"]["batch"]
 
 
 def json_str(data):
