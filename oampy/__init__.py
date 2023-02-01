@@ -24,11 +24,18 @@ except KeyError:
     user = getpass.getuser()
     EMAIL = "{0}@{1}".format(user, host)
 
+try:
+    TOKEN = os.environ["OAM_TOKEN"]
+except KeyError:
+    TOKEN = None
+
 from . import client, query
 
 
-def get_client(headers={}):
-    return client.OpenAccessMonitorAPI(headers=headers)
+def get_client(headers={}, token=""):
+    if not token and TOKEN:
+        token = TOKEN
+    return client.OpenAccessMonitorAPI(headers=headers, token=token)
 
 
 def get_journal(issn, headers={}):

@@ -21,6 +21,8 @@ Prerequisite
 Create an environment variable ``OAM_EMAIL`` with your email address. If the
 variable isn’t created before using this package, your ``username@hostname``
 will be used to populate the user agent field in the request headers instead.
+Since `version 2.1 <https://open-access-monitor.de/notes>`_ you need a token to
+use the API. ... ``OAM_TOKEN`` ...
 See also `Usage Terms`_ below.
 
 Usage Examples
@@ -33,6 +35,8 @@ Command Line
 
     # set environment variable OAM_EMAIL
     export OAM_EMAIL="researcher@institution.org"
+    # set environment variable OAM_TOKEN
+    export OAM_TOKEN="YOUR_SECRET_OAM_API_TOKEN"
     # fetch metadata of journal given by ISSN
     oampy journal "0360-4012"
     # fetch metadata of publication given by DOI
@@ -47,6 +51,8 @@ Interpreter
     import os
     # set environment variable OAM_EMAIL
     os.environ["OAM_EMAIL"] = "researcher@institution.org"
+    # set environment variable OAM_TOKEN
+    os.environ["OAM_TOKEN"] = "YOUR_SECRET_OAM_API_TOKEN"
     # import package oampy
     import oampy
     # fetch metadata of journal

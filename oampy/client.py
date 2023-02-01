@@ -11,20 +11,21 @@ from . import utils
 
 class OpenAccessMonitorAPI:
 
-    def __init__(self, headers={}):
+    def __init__(self, headers={}, token=""):
         self.BASE = "https://open-access-monitor.de/api"
         self.DATA = "{0}/Data".format(self.BASE)
         self.PUBLIC = "{0}/public".format(self.DATA)
         self.headers = headers
+        self.token = token
 
     def info(self):
         return utils.json_request(self.BASE, headers=self.headers)
 
     def _databases(self):
-        return utils.json_request(self.DATA, headers=self.headers)
+        return utils.json_request(self.token_url(self.DATA), headers=self.headers)
 
-    def collections(self):
-        return utils.json_request(self.PUBLIC, headers=self.headers)
+    def collections(self, token=None):
+        return utils.json_request(self.token_url(self.PUBLIC), headers=self.headers)
 
     @staticmethod
     def find_query(find, limit=10, **kwargs):
@@ -33,10 +34,16 @@ class OpenAccessMonitorAPI:
             q[key] = value
         return utils.json_str(q)
 
+    def token_url(self, url):
+        return "{0}?token={1}".format(url, self.token or "")
+
     def query_url(self, query):
-        return "{0}?query={1}".format(self.PUBLIC, query)
+        return "{0}?query={1}&token={2}".format(self.PUBLIC, query, self.token or "")
 
     def get(self, query):
+        if self.token is None:
+            # raise exception, log message, ...?
+            return None
         url = self.query_url(query)
         return utils.oam_request(url, headers=self.headers)
 
@@ -48,6 +55,8 @@ class OpenAccessMonitorAPI:
 
     def scroll(self, find, limit=100, **kwargs):
         batch = self.search(find, limit=limit, **kwargs)
+        if not isinstance(batch, list):
+            return None
         if len(batch) < limit:
             return batch
         skip = 0
