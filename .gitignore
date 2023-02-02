@@ -8,6 +8,8 @@ dev.*
 
 *.json
 
+*secret*
+
 # the following derives from Python.gitignore which can found at:
 # https://github.com/github/gitignore/blob/master/Python.gitignore
 
