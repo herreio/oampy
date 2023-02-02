@@ -1,3 +1,7 @@
+0.2.0 [2022-02-02]
+
+- support token-based API access
+
 0.1.14 [2022-01-12]
 
 - adjust utils.oam_batch after changes in response format
