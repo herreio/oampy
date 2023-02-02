@@ -75,12 +75,12 @@ class OpenAccessMonitorAPI:
         return batches
 
     def publication(self, doi):
-        response = self.search("Publications", limit=1, filter={"_id": doi})
+        response = self.search("Publications", limit=1, filter={"doi": doi})
         if response and len(response) > 0:
             return docs.PublicationParser(response[0])
 
     def publication_costs(self, doi):
-        response = self.search("PublicationCosts", limit=1, filter={"_id": doi})
+        response = self.search("PublicationCosts", limit=1, filter={"doi": doi})
         if response and len(response) > 0:
             return docs.PublicationCostsParser(response[0])
 
