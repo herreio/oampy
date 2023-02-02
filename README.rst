@@ -22,7 +22,8 @@ Create an environment variable ``OAM_EMAIL`` with your email address. If the
 variable isn’t created before using this package, your ``username@hostname``
 will be used to populate the user agent field in the request headers instead.
 Since `version 2.1 <https://open-access-monitor.de/notes>`_ you need a token to
-use the API. ... ``OAM_TOKEN`` ...
+use the API. Therefore, you must create an environment variable ``OAM_TOKEN``
+with your token.
 See also `Usage Terms`_ below.
 
 Usage Examples
