@@ -1,6 +1,6 @@
-============
-oampy (beta)
-============
+=====
+oampy
+=====
 
 ``oampy`` is a Python package and command line tool that allows to access data
 from the Open Access Monitor (OAM), which is run by Forschungszentrum Jülich.
