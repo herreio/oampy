@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 This package allows to access data from the Open Access Monitor (OAM),
-which is run by Forschungszentrum Jülich (c) 2022.
+which is run by Forschungszentrum Jülich (c) 2025.
 
 For the OAM dashboard, see
 https://open-access-monitor.de
