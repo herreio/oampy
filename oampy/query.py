@@ -75,7 +75,7 @@ def filter_openapc_organisation_grid(grid_id, filter={}):
 
 
 def filter_agreements(agreement, filter={}):
-    filter["agreements"] = agreement
+    filter["agreements._id"] = agreement
     return filter
 
 

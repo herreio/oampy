@@ -259,7 +259,7 @@ class JournalParser(OaObjectParser):
         agreements = self.agreements
         if isinstance(agreements, list) and len(agreements) > 0:
             if joined:
-                return self._delim.join(agreements)
+                return self._delim.join([a["_id"] for a in agreements])
             return agreements
 
     @property
