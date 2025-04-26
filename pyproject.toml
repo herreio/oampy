@@ -10,7 +10,7 @@ authors = [
 description = "Open Access Monitor API Client"
 readme = "README.rst"
 license.file = "LICENSE"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
   "requests",
   "click"

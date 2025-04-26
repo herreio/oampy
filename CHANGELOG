@@ -1,3 +1,8 @@
+0.3.0 [2025-04-27]
+
+- add pyproject.toml and remove setup.py
+- fix filter query for affiliations
+
 0.2.1 [2022-02-02]
 
 - fix DOI-based queries for publications
