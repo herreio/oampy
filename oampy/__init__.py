@@ -84,7 +84,8 @@ def get_wos_grid_publications(grid_id, limit=10, scroll=False, filter={}, header
 
 def get_wos_grid_latest_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     latest_sort = query.sort_desc("published_date")
-    return get_wos_grid_publications(grid_id, limit=limit, scroll=scroll, filter=filter, headers=headers, sort=latest_sort, **kwargs)
+    return get_wos_grid_publications(grid_id, limit=limit, scroll=scroll, filter=filter, headers=headers,
+                                     sort=latest_sort, **kwargs)
 
 
 def get_dim_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -94,7 +95,8 @@ def get_dim_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers=
 
 def get_dim_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     latest_sort = query.sort_desc("published_date")
-    return get_dim_ror_publications(ror_id, limit=limit, scroll=scroll, filter=filter, headers=headers, sort=latest_sort, **kwargs)
+    return get_dim_ror_publications(ror_id, limit=limit, scroll=scroll, filter=filter, headers=headers,
+                                    sort=latest_sort, **kwargs)
 
 
 def get_wos_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -104,7 +106,8 @@ def get_wos_ror_publications(ror_id, limit=10, scroll=False, filter={}, headers=
 
 def get_wos_ror_latest_publications(ror_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     latest_sort = query.sort_desc("published_date")
-    return get_wos_ror_publications(ror_id, limit=limit, scroll=scroll, filter=filter, headers=headers, sort=latest_sort, **kwargs)
+    return get_wos_ror_publications(ror_id, limit=limit, scroll=scroll, filter=filter, headers=headers,
+                                    sort=latest_sort, **kwargs)
 
 
 def get_dim_grid_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
@@ -114,7 +117,8 @@ def get_dim_grid_publications(grid_id, limit=10, scroll=False, filter={}, header
 
 def get_dim_grid_latest_publications(grid_id, limit=10, scroll=False, filter={}, headers={}, **kwargs):
     latest_sort = query.sort_desc("published_date")
-    return get_dim_grid_publications(grid_id, limit=limit, scroll=scroll, filter=filter, headers=headers, sort=latest_sort, **kwargs)
+    return get_dim_grid_publications(grid_id, limit=limit, scroll=scroll, filter=filter, headers=headers,
+                                     sort=latest_sort, **kwargs)
 
 
 def run_publication_cost_search(limit=10, scroll=False, headers={}, **kwargs):
