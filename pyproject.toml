@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oampy"
+authors = [
+    {name = "Donatus Herre", email = "donatus.herre@slub-dresden.de"},
+]
+description = "Open Access Monitor API Client"
+readme = "README.rst"
+license.file = "LICENSE"
+version = "0.2.1"
+dependencies = [
+  "requests",
+  "click"
+]
+
+[project.urls]
+Homepage = "https://github.com/herreio/oampy"
+Repository = "https://github.com/herreio/oampy.git"
+Issues = "https://github.com/herreio/oampy/issues"
+Changelog = "https://github.com/herreio/oampy/blob/main/CHANGELOG"
+
+[tool.setuptools]
+packages = ["oampy"]
