@@ -1,5 +1,3 @@
-# Set up repository for development, run tests and build package.
-
 name: Lint Source Code
 
 on:

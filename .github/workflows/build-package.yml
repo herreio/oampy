@@ -1,6 +1,4 @@
-# Set up repository for development, run tests and build package.
-
-name: Development
+name: Build package
 
 on:
   push:
